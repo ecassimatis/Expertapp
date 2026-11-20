@@ -1,0 +1,7 @@
+[MESSAGES CONTROL]
+# Suppress E0401 (import-error) for SAP internal packages not available locally
+# These are installed in the deployment cluster via requirements.txt
+disable=E0401
+
+[FORMAT]
+max-line-length=120

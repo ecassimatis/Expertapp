@@ -1,0 +1,32 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: service
+
+metadata:
+  name: expert-finder-cap
+  description: CAP backend service and React UI for the SAP Expert Finder application. Provides expert search, shortlist management, and admin configuration endpoints. Delegates AI search to the expert-finder-agent via A2A protocol.
+  version: "1.0.0"
+
+provides:
+  apis:
+    - name: expert-finder-cap
+      kind: rest
+      ordId: customer.build:apiResource:expert-finder-3f96c.expert-finder-cap:v1
+
+container:
+  buildPath: .
+  port: 4004
+
+probes:
+  liveness:
+    path: /api/$metadata
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readiness:
+    path: /api/$metadata
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3

@@ -1,0 +1,45 @@
+{
+  "name": "expert-finder-cap",
+  "version": "1.0.0",
+  "description": "CAP backend service for the SAP Expert Finder application",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "build": "cds build",
+    "test": "jest --testPathPattern=test/"
+  },
+  "dependencies": {
+    "@sap/cds": "^8",
+    "@sap/xssec": "^4",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29",
+    "@sap/cds-dk": "^8",
+    "jest": "^29.7.0"
+  },
+  "cds": {
+    "requires": {
+      "auth": {
+        "kind": "xsuaa"
+      },
+      "expert-finder-agent": {
+        "kind": "rest",
+        "credentials": {
+          "url": "[env:AGENT_ENDPOINT_URL]"
+        }
+      }
+    },
+    "features": {
+      "fiori_preview": false
+    }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/test/**/*.test.js"
+    ]
+  }
+}

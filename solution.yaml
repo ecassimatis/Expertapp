@@ -1,0 +1,12 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: expert-finder-3f96c
+  version: "1.0.0"
+  description: SAP Expert Finder — helps users identify qualified, unconflicted internal SAP experts by domain for partner and ecosystem reviews. Combines AI-powered search with SuccessFactors data, seniority and conflict-of-interest filtering, external enrichment, and 30-minute call scheduling.
+
+assets:
+  - ref: ./assets/expert-finder-agent/asset.yaml
+  - ref: ./assets/sap-sf-ec-employee-profile-mcp-server/asset.yaml
+  - ref: ./assets/sap-sf-ec-skills-management-mcp-server/asset.yaml

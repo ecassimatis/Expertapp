@@ -1,0 +1,39 @@
+{
+  "xsappname": "expert-finder-cap",
+  "tenant-mode": "dedicated",
+  "description": "Security configuration for SAP Expert Finder CAP service",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Expert_Finder_User",
+      "description": "Default user role for Expert Finder — can search experts and manage shortlists"
+    },
+    {
+      "name": "$XSAPPNAME.Expert_Finder_Admin",
+      "description": "Administrator role for Expert Finder — can manage CoI rules and seniority configuration"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Expert_Finder_User",
+      "description": "Expert Finder default user",
+      "scope-references": ["$XSAPPNAME.Expert_Finder_User"]
+    },
+    {
+      "name": "Expert_Finder_Admin",
+      "description": "Expert Finder administrator",
+      "scope-references": ["$XSAPPNAME.Expert_Finder_User", "$XSAPPNAME.Expert_Finder_Admin"]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "Expert Finder User",
+      "description": "Standard user access to Expert Finder",
+      "role-template-references": ["$XSAPPNAME.Expert_Finder_User"]
+    },
+    {
+      "name": "Expert Finder Administrator",
+      "description": "Administrator access to Expert Finder",
+      "role-template-references": ["$XSAPPNAME.Expert_Finder_Admin"]
+    }
+  ]
+}
